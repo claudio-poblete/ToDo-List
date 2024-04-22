@@ -1,0 +1,145 @@
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap');
+
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body{
+  font-family: 'Ubuntu', sans-serif;
+  background-color: #F9F7F7;
+}
+
+.flex-row{
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.flex-column{
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+}
+
+header{
+  padding: 1rem 0;
+  border-bottom: 1px solid #112D4E;
+  margin: 1rem 3rem;
+}
+
+.title h1{
+  color: #3F72AF;
+  letter-spacing: 10px;
+}
+
+*::selection{
+  background-color: #112D4E;
+  color: #F9F7F7;
+}
+
+.title span, label, p, .input-task{ color: #112D4E; }
+
+.main-section, .count-section{
+  gap: 1rem;
+  align-items: center;
+  justify-content: center;
+  height: auto;
+}
+
+.add-task-container{
+  gap: 5px;
+  padding: 1rem;
+}
+
+.input-container{ gap: 1rem; }
+
+label{
+  font-size: 1.1rem;
+  font-weight: 600;
+  padding-left: 2px;
+  letter-spacing: 2px;
+}
+
+.input-task, .btn-task{
+  font-size: 1rem;
+  border-radius: 0.5rem;
+}
+
+.input-task{
+  width: 900px;
+  height: 40px;
+  padding: 0.5rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+}
+
+.btn-task{
+  padding: 0rem 2rem;
+  border: none;
+  background-color: #112D4E;
+  color: #F9F7F7;
+  cursor: pointer;
+}
+
+.task-container{
+  width: 600px;
+}
+
+#total-container{
+  gap: 5px;
+}
+
+.task-total{
+  font-size: 1.3rem;
+  font-weight: 700;
+}
+
+.task-section-container{
+  padding: 0.5rem 2rem;
+  justify-content: space-between;
+  border: 1px solid #3F72AF;
+  margin: 0.5rem 10rem;
+  border-radius: 0.5rem;
+}
+
+.task-title h3{
+  text-align: center;
+  padding: 1rem;
+}
+
+.check{
+  gap: 1rem;
+  padding: 1rem;
+}
+
+.check-button{
+  background-color: #112D4E;
+  color: #F9F7F7;
+}
+
+.delete-button{
+  border: 1px solid #3F72AF;
+}
+
+.check-button,.delete-button{
+  padding: 1rem 2rem;
+  border-radius: 0.5rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.delete-button:hover, .check-button:hover{
+  transition: .4s ease-in-out;
+}
+
+.check-button:hover{
+  background-color: #DBE2EF;
+  color: #112D4E;
+  border: 1px solid #112D4E;
+}
+
+.delete-button:hover{
+  background-color: #3F72AF;
+  color: #F9F7F7;
+}

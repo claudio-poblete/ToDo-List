@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ToDo List</title>
+  <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+  <header>
+    <div class="title">
+      <h1>To<span>Do</span> List</h1>
+    </div>
+  </header>
+  <main>
+    <section class="main-section flex-column">
+      <div class="add-task-container flex-column">
+        <div class="label-container">
+          <label for="new-task">Nueva Tarea</label>
+        </div>
+        <div class="input-container flex-row">
+          <input type="text" name="new-task" id="new-task" class="input-task" placeholder="Agrega una nueva tarea...">
+          <button class="btn-task" id="btn-add-task">Agregar</button>
+        </div>
+      </div>
+    </section>
+    <section class="count-section flex-column">
+      <div class="count-task-container flex-column">
+        <div id="total-container" class="flex-row">
+          <p class="task-total">Total: </p>
+          <p id="total-task" class="task-total"></p>
+        </div>
+        <div id="done-container flex-row">
+          <p id="done-task" class="task-total">Realizadas:
+          </p>
+        </div>
+      </div>
+    </section>
+    <section id="task-section">
+      <div class="task-section-container flex-column">
+      </div>
+    </section>
+  </main>
+
+
+
+
+
+
+
+
+  <script type="module" src="assets/js/index.js"></script>
+  <script src="https://kit.fontawesome.com/06653f5d6b.js" crossorigin="anonymous"></script>
+</body>
+</html>
