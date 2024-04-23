@@ -86,7 +86,7 @@ label{
   width: 600px;
 }
 
-#total-container{
+#total-container, #done-container{
   gap: 5px;
 }
 
@@ -98,14 +98,20 @@ label{
 .task-section-container{
   padding: 0.5rem 2rem;
   justify-content: space-between;
-  border: 1px solid #3F72AF;
+  border-bottom: 1px solid #3F72AF;
   margin: 0.5rem 10rem;
-  border-radius: 0.5rem;
 }
 
-.task-title h3{
+.task-title-container{
+  align-items: center;
+  gap: 1rem;
+}
+
+.task-title h3, .id-title h3{
+  color: #112D4E;
   text-align: center;
   padding: 1rem;
+  font-size: 1.5rem;
 }
 
 .check{
@@ -142,4 +148,8 @@ label{
 .delete-button:hover{
   background-color: #3F72AF;
   color: #F9F7F7;
+}
+
+.checked-text{
+  text-decoration: line-through;
 }
