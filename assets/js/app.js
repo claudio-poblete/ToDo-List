@@ -1,12 +1,11 @@
 document.addEventListener('DOMContentLoaded', ()=>{
   const addButton = document.querySelector('#btn-add-task')
   addButton.addEventListener('click', addTask)
+
+  updateTaskCounts()
 })
 
-
 let tasks = []
-let totalTasks = 0
-let completedTasks = 0
 
 let counter = 1;
 const generateId = () =>{
@@ -24,10 +23,9 @@ const addTask = () =>{
       completed: false
     }
     tasks.push(task)
-    totalTasks++
-    updateCompletedTasks()
     taskInput.value = ''
     renderTasks()
+    updateTaskCounts()
   }else{
     alert('Por favor, ingresa una tarea')
   }
@@ -38,23 +36,25 @@ const toggleTaskStatus = (taskId) =>{
   if(taskIndex !== -1){
     tasks[taskIndex].completed = !tasks[taskIndex].completed
     if(tasks[taskIndex].completed){
-      completedTasks++
-    }else{
-      completedTasks--
+      renderTasks()
+      updateTaskCounts()
     }
-    renderTasks()
   }
 }
 
 const deleteTask = (taskId) =>{
   tasks = tasks.filter(task => task.id !== taskId)
-  totalTasks--
-  updateCompletedTasks()
   renderTasks()
+  updateTaskCounts()
 }
 
-const updateCompletedTasks = ()=>{
-  completedTasks = tasks.filter(task => task.completed).length
+
+const updateTaskCounts = () => {
+  const totalTasksElement = document.querySelector('#total-task');
+  const doneTasksElement = document.querySelector('#done-task');
+
+  totalTasksElement.textContent = tasks.length;
+  doneTasksElement.textContent = tasks.filter(task => task.completed).length;
 }
 
 let taskSection = document.querySelector('#task-section')
@@ -65,15 +65,15 @@ const renderTasks = () =>{
       <div class="task-section-container flex-row">
         <div class="task-title-container flex-row">
           <div class="id-title">
-            <h3 id="task-id">${task.id}</h3>
+            ${task.completed === true ? `<h3 id="task-id" class="checked-text">${task.id}</h3>` : `<h3 id="task-id">${task.id}</h3>`}
           </div>
           <div id="task-name" class="task-title">
-            <h3>${task.taskName}</h3>
+            ${task.completed === true ? `<h3 class="checked-text">${task.taskName}</h3>` : `<h3>${task.taskName}</h3>`}
           </div>
         </div>
         <div class="check flex-row">
           <div>
-            <a id="done-button-${task.id}" class="check-button">Realizado</a>
+            ${task.completed === true ? `<a id="done-button-${task.id}" class="disabled">Realizado</a>` : `<a id="done-button-${task.id}" class="check-button">Realizado</a>`}
           </div>
           <div>
             <a id="delete-button-${task.id}" class="delete-button">Borrar</a>
@@ -86,11 +86,20 @@ const renderTasks = () =>{
 
   tasks.forEach((task =>{
     const doneButton = document.querySelector(`#done-button-${task.id}`)
-    doneButton.addEventListener('click', () => toggleTaskStatus(task.id))
+    doneButton.addEventListener('click', () => {
+      toggleTaskStatus(task.id)
+      updateTaskCounts()
+    })
   }))
 
   tasks.forEach(task =>{
     const deleteButton = document.querySelector(`#delete-button-${task.id}`)
-    deleteButton.addEventListener('click', () => deleteTask(task.id))
+    deleteButton.addEventListener('click', () => {
+      deleteTask(task.id)
+      updateTaskCounts()
+    })
   })
+
+  updateTaskCounts()
 }
+
